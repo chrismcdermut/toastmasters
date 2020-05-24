@@ -1,0 +1,152 @@
+<!-- HTML cobbled together to automate many of the Table Topics functions so that we all can fully participate.
+Tracking time, picking questions, and recording speaker and duration data -->
+
+<head>
+  <base target="_top">
+  <!-- Set style for buttons, headers and divisions -->
+  <style>
+    div {
+      width: 90%;
+      background-color: #a4c2f4;
+      border-style: groove;
+      border-color: #999999;
+      margin: 1px;
+      }
+    .button{
+      background-color: #a2c4c9;
+      border: 1px solid green;
+      border-radius: 8px;
+      transition-duration: 0.4s;
+      color: white;
+      padding: 10px 35px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      display: block;
+      width: 150px;
+      }
+    .buttonNames{
+      background-color: #ffe599;
+      border-color: #f1c232;
+      color: black;
+      }
+    .buttonNames:hover{
+         background-color: #f1c232;
+         color: white;
+      }
+    .buttonStart{
+      background-color: #93c47d;
+      border-color: #6aa84f;
+      color: black;
+      }
+    .buttonStart:hover{
+         background-color: #6aa84f;
+         color: white;
+      }
+    .buttonStop{
+      background-color: #e06666;
+      border-color: #cc0000;
+      color: black;
+      }
+    .buttonStop:hover{
+         background-color: #cc0000;
+         color: white;
+      }
+    h3{
+      text-align: center;
+      padding: -20px;
+    }
+  </style>
+</head>
+
+
+
+<body>
+
+  <div>
+    <h3> Welcome to </h3>
+    <h3>VTM Table Topics</h3>
+  </div>
+
+  <div align=center>
+    <p>
+       Please choose your name.
+    </p>
+
+    <!-- timerGreen is a test to apply conditional formatting to the sheet via the script -->
+    <input type="button"
+    class="button buttonNames"
+    value="Asriel"
+    onclick="sendName();setTimeout(timerGreen,3000)"
+    id="name">
+
+    <input type="button"
+    class="button buttonNames"
+    value="Chris"
+    onclick="sendName()"
+    id="name">
+
+    <input type="button"
+    class="button buttonNames"
+    value="Matt"
+    onclick="sendName()"
+    id="name">
+
+    <input type="button"
+    class="button buttonNames"
+    value="Michelle"
+    onclick="sendName()"
+    id="name">
+
+    <p></p>
+  </div>
+
+  <div align=center>
+    <p>
+       Start whenever you're ready.
+    </p>
+
+    <!-- varTimerProc and associated functions are not set yet, waiting to get timerGreen to work first -->
+    <input type="button"
+    class="button buttonStart"
+    value="Start"
+    onclick="varTimerProc = setTimeout(oneMinute,60000);setTimeout(oneMinuteThirty,90000);setTimeout(twoMinutes,120000)">
+
+    <!-- clearTimeout is not set yet but should stop the timers when activated -->
+    <input type="button"
+    class="button buttonStop"
+    value="Stop"
+    onclick="clearTimeout(varTimerProc)">
+
+    <p></p>
+  </div>
+
+    <!-- piece of the original code to initiate script to transfer text from html to script to spreadsheet -->
+
+    <!-- Create an input field to accept a value form user, in this case their name -->
+    Your Name:
+    <input type="text" id="name"><br>
+    <!-- Create a button to send the value to the spreadsheet -->
+    <button onclick='sendName()'>Send Name</button>
+
+
+<script>
+  /* Original code to initiate script to transfer text from html */
+  function sendName(){
+   //Get the value of the input field
+   var name = document.getElementById("name").value
+   //Log the value of input field in the web browser console (usually used for debugging)
+   console.log(name)
+   //Send the value of the text field as an arugment to the server side function.
+   google.script.run.enterName(name);
+   name = undefined;
+  }
+
+  /* WIP: to initate conditional formatting */
+  function timerGreen(){
+  google.script.run.timerGreen();
+  }
+
+</script>
+  </body>
